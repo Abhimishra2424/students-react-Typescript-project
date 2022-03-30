@@ -1,6 +1,7 @@
 import { FC, useState } from "react";
 import { Student } from "../types/student";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 interface StudentFormProps {
   student: Student;
@@ -8,6 +9,7 @@ interface StudentFormProps {
 
 const StudentForm: FC<StudentFormProps> = (props) => {
   const { student } = props;
+  const navigation = useNavigate();
   const [firstName, setFirstName] = useState(student.firstName);
   const [lastName, setLastName] = useState(student.lastName);
   const [email, setEmail] = useState(student.email);
@@ -32,6 +34,10 @@ const StudentForm: FC<StudentFormProps> = (props) => {
       "https://6239721f63fdd477ac12c41b.mockapi.io/student",
       payload
     );
+    if (data) {
+      navigation("/");
+      window.location.reload();
+    }
     console.log("data", data);
   };
 
@@ -86,7 +92,7 @@ const StudentForm: FC<StudentFormProps> = (props) => {
             </div>
             <div className="mb-3">
               <label htmlFor="exampleFormControlInput1" className="form-label">
-                Email
+                phone
               </label>
               <input
                 type="phone"

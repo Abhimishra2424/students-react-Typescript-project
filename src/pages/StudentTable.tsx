@@ -1,4 +1,4 @@
-import { FC} from "react";
+import { FC } from "react";
 import { Student } from "../types/student";
 
 interface StudentTableProps {
@@ -19,6 +19,7 @@ const StudentTable: FC<StudentTableProps> = (props) => {
               <th scope="col">FirstName</th>
               <th scope="col">LastName</th>
               <th scope="col">Email</th>
+              <th scope="col">Phone</th>
               <th scope="col">Address</th>
               <th scope="col">Gender</th>
             </tr>
@@ -27,10 +28,11 @@ const StudentTable: FC<StudentTableProps> = (props) => {
             {studentsList.map((i) => {
               return (
                 <tr key={i.id}>
-                  <th scope="row">1</th>
+                  <th scope="row">{i.id}</th>
                   <td>{i.firstName}</td>
                   <td>{i.lastName}</td>
                   <td>{i.email}</td>
+                  <td>{i.phone}</td>
                   <td>{i.address}</td>
                   <td>{i.gender}</td>
                 </tr>
